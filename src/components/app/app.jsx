@@ -5,7 +5,7 @@ import Main from "../main/main.jsx";
 const App = ({film}) => {
 
   return <React.Fragment>
-    return <Main film={film}/>;
+    <Main film={film}/>;
   </React.Fragment>;
 };
 
