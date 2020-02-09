@@ -1,13 +1,26 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
 import Main from "../main/main.jsx";
 
-// eslint-disable-next-line react/prop-types
-const App = ({film}) => {
+const App = (props) => {
+  const {film, filmList} = props;
 
   return <React.Fragment>
-    <Main film={film}/>;
+    <Main
+      film={film}
+      filmList={filmList}
+    />;
   </React.Fragment>;
 };
 
+App.propTypes = {
+  film: PropTypes.shape({
+    filmName: PropTypes.string,
+    genre: PropTypes.string,
+    releaseDate: PropTypes.number,
+  }),
+  filmList: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default App;

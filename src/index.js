@@ -8,7 +8,17 @@ const film = {
   releaseDate: 2014,
 };
 
+const FILMS_NAME = [
+  `Fantastic Beasts`,
+  `Bohemian Rhapsody`,
+  `Macbeth`,
+  `The Grand Budapest Hotel`
+];
+
 ReactDOM.render(
-    <App film={film}/>,
+    <App
+      film={film}
+      filmList={FILMS_NAME}
+    />,
     document.querySelector(`#root`)
 );
