@@ -14,10 +14,7 @@ const film = {
 };
 
 const filmName = [
-  `film-1`,
-  `film-2`,
-  `film-3`,
-  `film-4`
+  `film-1`
 ];
 
 it(`Should film-card title be pressed`, () => {
@@ -31,7 +28,7 @@ it(`Should film-card title be pressed`, () => {
         onFilmCardTitleClick={onFilmCardTitleClickA}
       />);
 
-  const filmCardLink = main.find(`.small-movie-card__link`);
+  const filmCardLink = main.find(`.small-movie-card__title`).first();
 
   filmCardLink.forEach((title) => title.simulate(`click`));
 

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import FilmCard from "../filmCard/film-сard.jsx";
-
 const Main = (props) => {
-  const {film, filmList} = props;
+  const {film,
+    filmList = `12345`,
+    onFilmCardTitleClick} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -100,7 +100,14 @@ const Main = (props) => {
         </ul>
 
         <div className="catalog__movies-list">
-          {filmList.map((nameItem, i) => <FilmCard key={name + i} filmName={nameItem} />)}
+          <article className="small-movie-card catalog__movies-card">
+            <div className="small-movie-card__image">
+              <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+            </div>
+            <h3 className="small-movie-card__title" onClick={onFilmCardTitleClick}>
+              <a className="small-movie-card__link" href="movie-page.html">{filmList}</a>
+            </h3>
+          </article>
         </div>
 
         <div className="catalog__more">
