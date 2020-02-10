@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const filmCard = (props) => {
+const filmArd = (props) => {
   const {filmName} = props;
 
   return <React.Fragment>
@@ -16,8 +16,8 @@ const filmCard = (props) => {
   </React.Fragment>;
 };
 
-filmCard.propTypes = {
+filmArd.propTypes = {
   filmName: PropTypes.string,
 };
 
-export default filmCard;
+export default filmArd;

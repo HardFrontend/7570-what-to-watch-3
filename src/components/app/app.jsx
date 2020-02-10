@@ -16,7 +16,7 @@ const App = (props) => {
 
 App.propTypes = {
   film: PropTypes.shape({
-    filmName: PropTypes.string,
+    name: PropTypes.string,
     genre: PropTypes.string,
     releaseDate: PropTypes.number,
   }),
