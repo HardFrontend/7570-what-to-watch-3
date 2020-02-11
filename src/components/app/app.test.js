@@ -16,12 +16,14 @@ const filmName = [
   `film-4`,
 ];
 
+const onFilmCardTitleClick = jest.fn();
 
 it(`Render App`, () => {
   const tree = renderer
     .create(<App
       film={film}
       filmList={filmName}
+      onFilmCardTitleClick = {onFilmCardTitleClick}
     />)
     .toJSON();
 

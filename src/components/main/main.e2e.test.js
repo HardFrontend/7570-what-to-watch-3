@@ -19,20 +19,20 @@ const filmName = [
 
 it(`Should film-card title be pressed`, () => {
 
-  const onFilmCardTitleClickA = jest.fn();
+  const onFilmCardTitleClick = jest.fn();
 
   const main = shallow(
       <Main
         film={film}
         filmList={filmName}
-        onFilmCardTitleClick={onFilmCardTitleClickA}
+        onFilmCardTitleClick={onFilmCardTitleClick}
       />);
 
   const filmCardLink = main.find(`.small-movie-card__title`).first();
 
   filmCardLink.forEach((title) => title.simulate(`click`));
 
-  expect(onFilmCardTitleClickA.mock.calls.length).toBe(filmName.length);
+  expect(onFilmCardTitleClick.mock.calls.length).toBe(filmName.length);
 
 });
 

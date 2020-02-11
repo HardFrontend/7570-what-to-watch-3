@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 
 import Main from "../main/main.jsx";
 
+const onFilmCardTitleClick = () => {};
+
 const App = (props) => {
-  const {film, filmList} = props;
+  const {film,
+    filmList} = props;
 
   return <React.Fragment>
     <Main
       film={film}
       filmList={filmList}
+      onFilmCardTitleClick = {onFilmCardTitleClick}
     />;
   </React.Fragment>;
 };
