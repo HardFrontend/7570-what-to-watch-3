@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
+import filmsMocks from "./mocks/films.js";
 
 const film = {
   name: `The Grand Budapest Hotel`,
@@ -18,7 +19,7 @@ const FILMS_NAME = [
 ReactDOM.render(
     <App
       film={film}
-      filmList={FILMS_NAME}
+      filmList={filmsMocks}
     />,
     document.querySelector(`#root`)
 );

@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+import MovieList from "../movie-list/movie-list.jsx";
+
 const Main = (props) => {
   const {film,
     filmList = `12345`,
@@ -99,18 +101,7 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-          {filmList.map((filmItem, index) =>
-            <article key={`filmList` + index} className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title" onClick={onFilmCardTitleClick}>
-                <a className="small-movie-card__link" href="movie-page.html">{filmItem}</a>
-              </h3>
-            </article>
-          )}
-        </div>
+        <MovieList filmList={filmList} />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -141,7 +132,7 @@ Main.propTypes = {
     genre: PropTypes.string,
     releaseDate: PropTypes.number,
   }),
-  filmList: PropTypes.arrayOf(PropTypes.string),
+  filmList: PropTypes.arrayOf(PropTypes.array),
   onFilmCardTitleClick: PropTypes.func.isRequired,
 };
 

@@ -20,7 +20,7 @@ App.propTypes = {
     genre: PropTypes.string,
     releaseDate: PropTypes.number,
   }),
-  filmList: PropTypes.arrayOf(PropTypes.string),
+  filmList: PropTypes.arrayOf(PropTypes.array),
 };
 
 export default App;
