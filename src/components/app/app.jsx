@@ -1,7 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
+import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import Main from "../main/main.jsx";
+import MovieDetails from "../movie-details/movie-page-details.jsx";
 
 class App extends PureComponent {
   constructor(props) {
@@ -18,7 +20,7 @@ class App extends PureComponent {
     this.setState({selectedMovieId});
   }
 
-  render() {
+  _renderApp() {
     const {film, filmList} = this.props;
 
     return <React.Fragment>
@@ -28,6 +30,23 @@ class App extends PureComponent {
         onMovieCardClick={this.movieCardClickHandler}
       />;
     </React.Fragment>;
+  }
+
+  render() {
+    const {film} = this.props;
+
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-component">
+            <MovieDetails film={film}/>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
   }
 }
 
