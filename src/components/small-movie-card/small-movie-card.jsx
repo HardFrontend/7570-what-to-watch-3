@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const MovieCard = (props) => {
   const {movie, onMovieCardClick, onMovieCardHover} = props;
 
-  return (
+  return <React.Fragment>
     <article className="small-movie-card catalog__movies-card" onMouseOver={onMovieCardHover}>
       <div className="small-movie-card__image">
         <img src={movie.img} alt={movie.title} width="280" height="175" />
@@ -13,7 +13,7 @@ const MovieCard = (props) => {
         <a className="small-movie-card__link" href="movie-page.html">{movie.title}</a>
       </h3>
     </article>
-  );
+  </React.Fragment>;
 };
 
 MovieCard.propTypes = {

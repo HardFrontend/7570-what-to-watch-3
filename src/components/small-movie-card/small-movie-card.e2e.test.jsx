@@ -23,7 +23,11 @@ it(`Should pass data to handler on hover`, () => {
       />
   );
 
-  movieCard.simulate(`mouseover`);
+  const filmCard = movieCard
+    .find(`article.small-movie-card.catalog__movies-card`)
+    .first();
+
+  filmCard.simulate(`mouseover`);
 
   expect(onMovieCardHover.mock.calls.length).toBe(1);
   expect(onMovieCardHover.mock.calls[0][0]).toMatchObject(movie);
