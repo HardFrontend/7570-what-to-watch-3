@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Main from './main.jsx';
-import FilmCard from "../small-movie-card/small-movie-card";
 
 const film = {
   name: `Film name`,
