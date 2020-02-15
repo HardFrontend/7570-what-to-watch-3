@@ -6,9 +6,11 @@ import MovieList from "../movie-list/movie-list.jsx";
 const Main = (props) => {
   const {film,
     filmList = `12345`,
-    onFilmCardTitleClick} = props;
+    onMovieCardClick
+  } = props;
 
-  return <React.Fragment>
+  return (
+    <>
     <section className="movie-card">
       <div className="movie-card__bg">
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -101,7 +103,7 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <MovieList filmList={filmList} />
+        <MovieList filmList={filmList} onMovieCardClick={onMovieCardClick}/>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -123,7 +125,8 @@ const Main = (props) => {
       </footer>
     </div>
 
-  </React.Fragment>;
+    </>
+  );
 };
 
 Main.propTypes = {
@@ -132,8 +135,13 @@ Main.propTypes = {
     genre: PropTypes.string,
     releaseDate: PropTypes.number,
   }),
-  filmList: PropTypes.arrayOf(PropTypes.array),
-  onFilmCardTitleClick: PropTypes.func.isRequired,
+  filmList: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired
+      }).isRequired
+  ).isRequired,
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export default Main;

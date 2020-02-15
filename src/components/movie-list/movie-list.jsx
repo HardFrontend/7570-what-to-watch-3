@@ -1,23 +1,40 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 
-const MovieList = (props) => {
-  const {
-    filmList = `12345`,
-    onFilmCardTitleClick} = props;
+class MovieList extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return <React.Fragment>
-    <div className="catalog__movies-list">
-      {filmList.map((movie, index) => (
-        <SmallMovieCard
-          key={movie.name + index}
-          movie={movie}
-        />
-      ))}
-    </div>
-  </React.Fragment>;
-};
+    this.state = {
+      selectedMovieId: null
+    };
+
+    this.movieCardHoverHandler = this.movieCardHoverHandler.bind(this);
+  }
+
+  movieCardHoverHandler(selectedMovieId) {
+    this.setState({selectedMovieId});
+  }
+
+  render() {
+    const {filmList, onMovieCardClick} = this.props;
+
+    return <React.Fragment>
+      <div className="catalog__movies-list">
+        {filmList.map((movie, index) => (
+          <SmallMovieCard
+            key={movie.title + index}
+            movie={movie}
+            onMovieCardClick={() => onMovieCardClick(index)}
+            onMovieCardHover={() => this.movieCardHoverHandler(index)}
+          />
+        ))}
+      </div>
+    </React.Fragment>;
+  }
+}
+
 
 MovieList.propTypes = {
   filmList: PropTypes.arrayOf(
@@ -26,7 +43,7 @@ MovieList.propTypes = {
         img: PropTypes.string.isRequired
       }).isRequired
   ).isRequired,
-  onFilmCardTitleClick: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
 };
 
 export default MovieList;
