@@ -265,7 +265,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
+              alt="Bohemian rhapsody"
               height="175"
+              src="img/bohemian-rhapsody.jpg"
               width="280"
             />
           </div>
@@ -276,7 +278,9 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Bohemian rhapsody
+            </a>
           </h3>
         </article>
         <article
@@ -287,7 +291,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
+              alt="Bdardjeeling Limited"
               height="175"
+              src="img/dardjeeling-limited.jpg"
               width="280"
             />
           </div>
@@ -298,7 +304,9 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Bdardjeeling Limited
+            </a>
           </h3>
         </article>
         <article
@@ -309,7 +317,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
+              alt="Fantastic beasts the crimes of grindelwald"
               height="175"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -320,7 +330,9 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Fantastic beasts the crimes of grindelwald
+            </a>
           </h3>
         </article>
         <article
@@ -331,7 +343,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
+              alt="Johnny english"
               height="175"
+              src="img/johnny-english.jpg"
               width="280"
             />
           </div>
@@ -342,7 +356,9 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            />
+            >
+              Johnny english
+            </a>
           </h3>
         </article>
       </div>
