@@ -9,7 +9,13 @@ Enzyme.configure({
 
 const movie = {
   title: `Bohemian rhapsody`,
-  img: `img/bohemian-rhapsody.jpg`
+  imgPoster: `img/bohemian-rhapsody.jpg`,
+  genre: `Comedy`,
+  releaseDate: 2020,
+  imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
+  runTime: `1h 50m`,
+  director: `Wes Andreson`,
+  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`]
 };
 
 it(`Should pass data to handler on hover`, () => {

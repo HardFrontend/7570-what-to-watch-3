@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FilmCard from './small-movie-card.jsx';
+
+import MovieDetails from "../movie-details/movie-page-details.jsx";
 
 const movie = {
   title: `Bohemian rhapsody`,
@@ -13,16 +14,13 @@ const movie = {
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`]
 };
 
-it(`Render FilmCard`, () => {
+
+it(`Render MovieDetails`, () => {
   const tree = renderer
-    .create(<FilmCard
+    .create(<MovieDetails
       movie={movie}
-      onMovieCardClick={() => {}}
-      onMovieCardHover={() => {}}
     />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
-
-

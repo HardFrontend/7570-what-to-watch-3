@@ -21,11 +21,16 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {film, filmList} = this.props;
+    const {filmPromo, filmList} = this.props;
+    const {selectedMovieId} = this.state;
+
+    if (selectedMovieId !== null) {
+      return <MovieDetails movie={this.props.filmList[selectedMovieId]} />;
+    }
 
     return <React.Fragment>
       <Main
-        film={film}
+        filmPromo={filmPromo}
         filmList={filmList}
         onMovieCardClick={this.movieCardClickHandler}
       />;
@@ -33,7 +38,6 @@ class App extends PureComponent {
   }
 
   render() {
-    const {film} = this.props;
 
     return (
       <BrowserRouter>
@@ -42,7 +46,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-component">
-            <MovieDetails film={film}/>
+            <MovieDetails movie={this.props.filmList[this.state.selectedMovieId || 0]}/>
           </Route>
         </Switch>
       </BrowserRouter>
@@ -51,7 +55,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  film: PropTypes.shape({
+  filmPromo: PropTypes.shape({
     name: PropTypes.string,
     genre: PropTypes.string,
     releaseDate: PropTypes.number,
@@ -59,7 +63,13 @@ App.propTypes = {
   filmList: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
+        imgPoster: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        releaseDate: PropTypes.number.isRequired,
+        imgBg: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        runTime: PropTypes.string.isRequired,
+        starring: PropTypes.array.isRequired
       }).isRequired
   ).isRequired,
 };

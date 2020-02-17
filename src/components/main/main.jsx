@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import MovieList from "../movie-list/movie-list.jsx";
 
 const Main = (props) => {
-  const {film,
+  const {filmPromo,
     filmList = `12345`,
     onMovieCardClick
   } = props;
@@ -41,10 +41,10 @@ const Main = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{film.name}</h2>
+            <h2 className="movie-card__title">{filmPromo.name}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{film.genre}</span>
-              <span className="movie-card__year">{film.releaseDate}</span>
+              <span className="movie-card__genre">{filmPromo.genre}</span>
+              <span className="movie-card__year">{filmPromo.releaseDate}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -130,7 +130,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  film: PropTypes.shape({
+  filmPromo: PropTypes.shape({
     name: PropTypes.string,
     genre: PropTypes.string,
     releaseDate: PropTypes.number,
@@ -138,7 +138,13 @@ Main.propTypes = {
   filmList: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
+        genre: PropTypes.string.isRequired,
+        releaseDate: PropTypes.number.isRequired,
+        imgPoster: PropTypes.string.isRequired,
+        imgBg: PropTypes.string.isRequired,
+        runTime: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        starring: PropTypes.array.isRequired
       }).isRequired
   ).isRequired,
   onMovieCardClick: PropTypes.func.isRequired

@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const MovieDetails = (props) => {
-  const {film} = props;
+  const {movie} = props;
 
   return <React.Fragment>
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
         <div className="movie-card__bg">
-          <img src={film.imgBg} alt="The Grand Budapest Hotel"/>
+          <img src={movie.imgBg} alt="The Grand Budapest Hotel"/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -31,10 +31,10 @@ const MovieDetails = (props) => {
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{film.name}</h2>
+            <h2 className="movie-card__title">{movie.title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{film.genre}</span>
-              <span className="movie-card__year">{film.releaseDate}</span>
+              <span className="movie-card__genre">{movie.genre}</span>
+              <span className="movie-card__year">{movie.releaseDate}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -59,7 +59,7 @@ const MovieDetails = (props) => {
       <div className="movie-card__wrap movie-card__translate-top">
         <div className="movie-card__info">
           <div className="movie-card__poster movie-card__poster--big">
-            <img src={film.imgPoster} alt="The Grand Budapest Hotel poster" width="218"
+            <img src={movie.imgPoster} alt="The Grand Budapest Hotel poster" width="218"
               height="327"/>
           </div>
 
@@ -82,12 +82,12 @@ const MovieDetails = (props) => {
               <div className="movie-card__text-col">
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Director</strong>
-                  <span className="movie-card__details-value">{film.director}</span>
+                  <span className="movie-card__details-value">{movie.director}</span>
                 </p>
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Starring</strong>
                   <span className="movie-card__details-value">
-                    {film.starring.map((actor, index) => (
+                    {movie.starring.map((actor, index) => (
                       <React.Fragment key={actor + index}>
                         {actor} <br />
                       </React.Fragment>
@@ -99,15 +99,15 @@ const MovieDetails = (props) => {
               <div className="movie-card__text-col">
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Run Time</strong>
-                  <span className="movie-card__details-value">{film.runTime}</span>
+                  <span className="movie-card__details-value">{movie.runTime}</span>
                 </p>
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Genre</strong>
-                  <span className="movie-card__details-value">{film.genre}</span>
+                  <span className="movie-card__details-value">{movie.genre}</span>
                 </p>
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Released</strong>
-                  <span className="movie-card__details-value">{film.releaseDate}</span>
+                  <span className="movie-card__details-value">{movie.releaseDate}</span>
                 </p>
               </div>
             </div>
@@ -179,15 +179,15 @@ const MovieDetails = (props) => {
 };
 
 MovieDetails.propTypes = {
-  film: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.number.isRequired,
     imgPoster: PropTypes.string.isRequired,
     imgBg: PropTypes.string.isRequired,
     runTime: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    starring: PropTypes.object.isRequired
+    starring: PropTypes.array.isRequired
   }),
 };
 

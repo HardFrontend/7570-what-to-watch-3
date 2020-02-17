@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
 import filmsMocks from "./mocks/films.js";
 
-const film = {
+const filmPromo = {
   name: `The Grand Budapest Hotel`,
   genre: `Horor`,
   releaseDate: 2020,
@@ -16,7 +16,7 @@ const film = {
 
 ReactDOM.render(
     <App
-      film={film}
+      filmPromo={filmPromo}
       filmList={filmsMocks}
     />,
     document.querySelector(`#root`)

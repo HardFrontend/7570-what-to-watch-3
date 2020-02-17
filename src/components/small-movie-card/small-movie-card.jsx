@@ -5,12 +5,12 @@ const MovieCard = (props) => {
   const {movie, onMovieCardClick, onMovieCardHover} = props;
 
   return <React.Fragment>
-    <article className="small-movie-card catalog__movies-card" onMouseOver={onMovieCardHover}>
+    <article className="small-movie-card catalog__movies-card" onMouseOver={onMovieCardHover} onClick={onMovieCardClick}>
       <div className="small-movie-card__image">
         <img src={movie.imgPoster} alt={movie.title} width="280" height="175" />
       </div>
-      <h3 className="small-movie-card__title" onClick={onMovieCardClick}>
-        <a className="small-movie-card__link" href="movie-page.html">{movie.title}</a>
+      <h3 className="small-movie-card__title" >
+        <a className="small-movie-card__link" href="/dev-component">{movie.title}</a>
       </h3>
     </article>
   </React.Fragment>;

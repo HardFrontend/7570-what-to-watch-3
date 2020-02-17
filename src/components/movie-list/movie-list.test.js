@@ -1,12 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Main from './main.jsx';
-
-const filmPromo = {
-  name: `Film name`,
-  genre: `Film genre`,
-  releaseDate: 2020,
-};
+import MovieList from './movie-list.jsx';
 
 const filmList = [
   {
@@ -51,10 +45,9 @@ const filmList = [
   }
 ];
 
-it(`Render Main`, () => {
+it(`Render list of films`, () => {
   const tree = renderer
-    .create(<Main
-      filmPromo={filmPromo}
+    .create(<MovieList
       filmList={filmList}
       onMovieCardClick={() => {}}
       onMovieCardHover={() => {}}
@@ -63,5 +56,3 @@ it(`Render Main`, () => {
 
   expect(tree).toMatchSnapshot();
 });
-
-
