@@ -187,7 +187,8 @@ MovieDetails.propTypes = {
     imgBg: PropTypes.string.isRequired,
     runTime: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    starring: PropTypes.array.isRequired
+    starring: PropTypes.array.isRequired,
+    video: PropTypes.array.isRequired
   }),
 };
 

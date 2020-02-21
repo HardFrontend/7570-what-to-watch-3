@@ -1,16 +1,22 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import MoviePlayer from "../videoplayer/videoplayer.jsx";
 
 const MovieCard = (props) => {
-  const {movie, onMovieCardClick, onMovieCardHover} = props;
+  const {movie, onMovieCardClick, onMovieCardHover, isPlaying, onMovieCardMouseOut} = props;
 
   return <React.Fragment>
-    <article className="small-movie-card catalog__movies-card" onMouseOver={onMovieCardHover} onClick={onMovieCardClick}>
+    <article className="small-movie-card catalog__movies-card" onMouseOver={onMovieCardHover} onMouseOut={onMovieCardMouseOut} >
       <div className="small-movie-card__image">
-        <img src={movie.imgPoster} alt={movie.title} width="280" height="175" />
+        {!isPlaying && (
+          <img src={movie.imgPoster} alt={movie.title} width="280" height="175" />
+        )}
+        {isPlaying && (
+          <MoviePlayer src={movie.video} movie={movie} muted={true} autoPlay={true} />
+        )}
       </div>
       <h3 className="small-movie-card__title" >
-        <a className="small-movie-card__link" href="/dev-component">{movie.title}</a>
+        <a className="small-movie-card__link" onClick={onMovieCardClick}>{movie.title}</a>
       </h3>
     </article>
   </React.Fragment>;
@@ -19,10 +25,19 @@ const MovieCard = (props) => {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    imgPoster: PropTypes.string.isRequired
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired,
+    imgPoster: PropTypes.string.isRequired,
+    imgBg: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.array.isRequired,
+    video: PropTypes.array.isRequired
   }),
   onMovieCardClick: PropTypes.func.isRequired,
-  onMovieCardHover: PropTypes.func.isRequired
+  onMovieCardHover: PropTypes.func.isRequired,
+  onMovieCardMouseOut: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool.isRequired
 };
 
 export default MovieCard;

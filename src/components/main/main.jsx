@@ -5,7 +5,7 @@ import MovieList from "../movie-list/movie-list.jsx";
 
 const Main = (props) => {
   const {filmPromo,
-    filmList = `12345`,
+    filmList,
     onMovieCardClick
   } = props;
 
