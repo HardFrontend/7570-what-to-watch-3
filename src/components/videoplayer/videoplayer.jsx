@@ -16,7 +16,6 @@ export default class VideoPlayer extends PureComponent {
 
   handleVideoPlay() {
     const video = this._videoRef.current;
-    console.log("click video");
 
     if (video.paused) {
       video.play();
@@ -26,6 +25,7 @@ export default class VideoPlayer extends PureComponent {
       this.setState({isPlaying: false});
     }
   }
+
   componentDidMount() {
     this.setState({isPlaying: this.props.autoPlay});
   }
@@ -41,17 +41,26 @@ export default class VideoPlayer extends PureComponent {
         poster={movie.imgPoster}
         width="100%"
         autoPlay={autoPlay}
-        onClick={() => this.handleVideoPlay}
+        onClick={() => this.handleVideoPlay()}
       >
         <source src={movie.video} />
       </video>
     );
   }
-
-
 }
 
 VideoPlayer.propTypes = {
-  src: PropTypes.string.isRequired,
-  autoPlay: PropTypes.bool.isRequired
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired,
+    imgPoster: PropTypes.string.isRequired,
+    imgBg: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.array.isRequired,
+    video: PropTypes.string.isRequired
+  }),
+  autoPlay: PropTypes.bool.isRequired,
+  muted: PropTypes.bool.isRequired,
 };

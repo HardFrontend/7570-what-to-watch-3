@@ -18,7 +18,8 @@ const filmList = [
     imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
     runTime: `1h 50m`,
     director: `Wes Andreson`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`]
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Bdardjeeling Limited`,
@@ -28,7 +29,8 @@ const filmList = [
     imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
     runTime: `1h 50m`,
     director: `Wes Andreson`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`]
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Fantastic beasts the crimes of grindelwald`,
@@ -38,7 +40,8 @@ const filmList = [
     imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
     runTime: `1h 50m`,
     director: `Wes Andreson`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`]
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Johnny english`,
@@ -48,7 +51,8 @@ const filmList = [
     imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
     runTime: `1h 50m`,
     director: `Wes Andreson`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`]
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];
 

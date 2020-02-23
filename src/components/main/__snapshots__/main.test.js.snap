@@ -259,7 +259,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -277,7 +277,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/dev-component"
+              onClick={[Function]}
             >
               Bohemian rhapsody
             </a>
@@ -285,7 +285,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -303,7 +303,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/dev-component"
+              onClick={[Function]}
             >
               Bdardjeeling Limited
             </a>
@@ -311,7 +311,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -329,7 +329,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/dev-component"
+              onClick={[Function]}
             >
               Fantastic beasts the crimes of grindelwald
             </a>
@@ -337,7 +337,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -355,7 +355,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/dev-component"
+              onClick={[Function]}
             >
               Johnny english
             </a>

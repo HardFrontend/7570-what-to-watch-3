@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FilmCard from './small-movie-card.jsx';
-import MovieCard from "./small-movie-card";
+import VideoPlayer from './videoplayer.jsx';
 
 const movie = {
   title: `Bohemian rhapsody`,
@@ -15,13 +14,11 @@ const movie = {
   video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
 };
 
-it(`Render FilmCard`, () => {
+it(`Render VideoPlayer`, () => {
   const tree = renderer
-    .create(<FilmCard
+    .create(<VideoPlayer
       movie={movie}
-      onMovieCardClick={() => {}}
-      onMovieCardHover={() => {}}
-      onMovieCardMouseOut={() => {}}
+
     />)
     .toJSON();
 

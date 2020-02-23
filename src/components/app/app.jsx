@@ -69,7 +69,8 @@ App.propTypes = {
         imgBg: PropTypes.string.isRequired,
         director: PropTypes.string.isRequired,
         runTime: PropTypes.string.isRequired,
-        starring: PropTypes.array.isRequired
+        starring: PropTypes.array.isRequired,
+        video: PropTypes.string.isRequired
       }).isRequired
   ).isRequired,
 };

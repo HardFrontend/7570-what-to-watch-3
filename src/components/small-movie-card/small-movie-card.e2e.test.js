@@ -15,17 +15,20 @@ const movie = {
   imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
   runTime: `1h 50m`,
   director: `Wes Andreson`,
-  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`]
+  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+  video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 it(`Should pass data to handler on hover`, () => {
   const onMovieCardHover = jest.fn();
+  const onMovieCardMouseOut = jest.fn();
 
   const movieCard = shallow(
       <MovieCard
         movie={movie}
         onMovieCardClick={() => {}}
         onMovieCardHover={() => onMovieCardHover(movie)}
+        onMovieCardMouseOut={() => onMovieCardMouseOut()}
       />
   );
 
