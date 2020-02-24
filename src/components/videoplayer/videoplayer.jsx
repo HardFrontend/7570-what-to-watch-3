@@ -12,13 +12,12 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidMount() {
-    const {movie, muted, autoPlay} = this.props;
+    const {movie, muted} = this.props;
     const video = this._videoRef.current;
 
     video.src = movie.videoUrl;
     video.poster = movie.imgPoster;
     video.muted = muted;
-    video.autoplay = true;
 
     video.onplay = () => {
       this.setState({
@@ -44,14 +43,11 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    const {movie, muted, autoPlay} = this.props;
-
     return (
       <video
         ref={this._videoRef}
         width="100%"
         height="auto"
-        autoPlay={autoPlay}
       />
     );
   }
