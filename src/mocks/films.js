@@ -8,7 +8,7 @@ export default [
     runTime: `1h 50m`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
-    videoUrlUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Bdardjeeling Limited`,
