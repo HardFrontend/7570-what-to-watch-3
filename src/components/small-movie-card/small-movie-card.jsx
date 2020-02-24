@@ -12,7 +12,7 @@ const MovieCard = (props) => {
           <img src={movie.imgPoster} alt={movie.title} width="280" height="175" />
         )}
         {isPlaying && (
-          <MoviePlayer src={movie.video} movie={movie} muted={true} autoPlay={true} />
+          <MoviePlayer src={movie.videoUrl} movie={movie} muted={true} autoPlay={true} />
         )}
       </div>
       <h3 className="small-movie-card__title" >
@@ -32,7 +32,7 @@ MovieCard.propTypes = {
     runTime: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.array.isRequired,
-    video: PropTypes.string.isRequired
+    videoUrl: PropTypes.string.isRequired
   }),
   onMovieCardClick: PropTypes.func.isRequired,
   onMovieCardHover: PropTypes.func.isRequired,

@@ -1,33 +1,46 @@
-import React, {PureComponent, createRef} from "react";
-import PropTypes from "prop-types";
-
-export default class VideoPlayer extends PureComponent {
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
+class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._videoRef = createRef();
+    this._videoRef = React.createRef();
 
     this.state = {
-      isPlaying: false
+      isPlaying: props.isPlaying
     };
-
-    this.handleVideoPlay = this.handleVideoPlay.bind(this);
-  }
-
-  handleVideoPlay() {
-    const video = this._videoRef.current;
-
-    if (video.paused) {
-      video.play();
-      this.setState({isPlaying: true});
-    } else {
-      video.pause();
-      this.setState({isPlaying: false});
-    }
   }
 
   componentDidMount() {
-    this.setState({isPlaying: this.props.autoPlay});
+    const {movie, muted, autoPlay} = this.props;
+    const video = this._videoRef.current;
+
+    video.src = movie.videoUrl;
+    video.poster = movie.imgPoster;
+    video.muted = muted;
+    video.autoplay = true;
+
+    video.onplay = () => {
+      this.setState({
+        isPlaying: true
+      });
+    };
+
+    video.onpause = () => {
+      this.setState({
+        isPlaying: false
+      });
+    };
+  }
+
+  componentWillUnmount() {
+    const video = this._videoRef.current;
+
+    video.onplay = null;
+    video.onpause = null;
+    video.src = ``;
+    video.height = ``;
+    video.poster = ``;
   }
 
   render() {
@@ -36,16 +49,26 @@ export default class VideoPlayer extends PureComponent {
     return (
       <video
         ref={this._videoRef}
-        muted={muted}
-        controls
-        poster={movie.imgPoster}
         width="100%"
+        height="auto"
         autoPlay={autoPlay}
-        onClick={() => this.handleVideoPlay()}
-      >
-        <source src={movie.video} />
-      </video>
+      />
     );
+  }
+
+  componentDidUpdate() {
+    const {isPlaying, stopOnPause} = this.props;
+    const video = this._videoRef.current;
+
+    if (isPlaying) {
+      video.play();
+    } else {
+      video.pause();
+      if (stopOnPause) {
+        video.currentTime = 0;
+        video.load();
+      }
+    }
   }
 }
 
@@ -59,8 +82,8 @@ VideoPlayer.propTypes = {
     runTime: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.array.isRequired,
-    video: PropTypes.string.isRequired
+    videoUrl: PropTypes.string.isRequired
   }),
-  autoPlay: PropTypes.bool.isRequired,
-  muted: PropTypes.bool.isRequired,
 };
+
+export default VideoPlayer;

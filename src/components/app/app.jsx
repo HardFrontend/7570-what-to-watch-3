@@ -70,7 +70,7 @@ App.propTypes = {
         director: PropTypes.string.isRequired,
         runTime: PropTypes.string.isRequired,
         starring: PropTypes.array.isRequired,
-        video: PropTypes.string.isRequired
+        videoUrl: PropTypes.string.isRequired
       }).isRequired
   ).isRequired,
 };
