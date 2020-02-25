@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import FilmCard from './small-movie-card.jsx';
-import MovieCard from "./small-movie-card";
 
 const movie = {
   title: `Bohemian rhapsody`,
@@ -12,7 +11,7 @@ const movie = {
   runTime: `1h 50m`,
   director: `Wes Andreson`,
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
-  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+  videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
 };
 
 it(`Render FilmCard`, () => {

@@ -12,12 +12,13 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidMount() {
-    const {movie, muted} = this.props;
+    const {movie, muted, isPlaying} = this.props;
     const video = this._videoRef.current;
 
     video.src = movie.videoUrl;
     video.poster = movie.imgPoster;
     video.muted = muted;
+    video.controls = true;
 
     video.onplay = () => {
       this.setState({
@@ -30,6 +31,10 @@ class VideoPlayer extends PureComponent {
         isPlaying: false
       });
     };
+
+    if (isPlaying) {
+      video.play();
+    }
   }
 
   componentWillUnmount() {
@@ -53,17 +58,14 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {isPlaying, stopOnPause} = this.props;
+    const {stopOnPause} = this.props;
     const video = this._videoRef.current;
 
-    if (isPlaying) {
-      video.play();
-    } else {
-      video.pause();
-      if (stopOnPause) {
-        video.currentTime = 0;
-        video.load();
-      }
+
+    video.pause();
+    if (stopOnPause) {
+      video.currentTime = 0;
+      video.load();
     }
   }
 }
@@ -80,6 +82,9 @@ VideoPlayer.propTypes = {
     starring: PropTypes.array.isRequired,
     videoUrl: PropTypes.string.isRequired
   }),
+  muted: PropTypes.bool.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+  stopOnPause: PropTypes.bool.isRequired
 };
 
 export default VideoPlayer;

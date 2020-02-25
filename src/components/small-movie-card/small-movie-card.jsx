@@ -12,7 +12,7 @@ const MovieCard = (props) => {
           <img src={movie.imgPoster} alt={movie.title} width="280" height="175" />
         )}
         {isPlaying && (
-          <MoviePlayer src={movie.videoUrl} movie={movie} muted={true} />
+          <MoviePlayer isPlaying={isPlaying} stopOnPause={true} src={movie.videoUrl} movie={movie} muted={true} />
         )}
       </div>
       <h3 className="small-movie-card__title" >

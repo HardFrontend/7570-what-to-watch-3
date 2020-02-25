@@ -9,8 +9,7 @@ class MovieList extends PureComponent {
     super(props);
 
     this.state = {
-      selectedMovieId: null,
-      isPlaying: false
+      selectedMovieId: null
     };
 
     this.movieCardHoverHandler = this.movieCardHoverHandler.bind(this);
@@ -18,29 +17,18 @@ class MovieList extends PureComponent {
   }
 
   movieCardHoverHandler(selectedMovieId) {
-    this.setState(
-        () => ({
-          selectedMovieId
-        }),
-        this.playToggle(selectedMovieId)
-    );
+    this._timeout = setTimeout(() => {
+      this.setState({
+        selectedMovieId
+      });
+    }, PLAYBACK_DELAY_TIMEOUT);
   }
 
   movieCardMouseOutHandler() {
+    clearTimeout(this._timeout);
     this.setState(() => ({
-      selectedMovieId: null,
-      isPlaying: false
+      selectedMovieId: null
     }));
-  }
-
-  playToggle(selectedMovieId) {
-    setTimeout(() => {
-      if (this.state.selectedMovieId === selectedMovieId) {
-        this.setState((prevState) => ({
-          isPlaying: !prevState.isPlaying
-        }));
-      }
-    }, PLAYBACK_DELAY_TIMEOUT);
   }
 
   render() {
@@ -55,13 +43,15 @@ class MovieList extends PureComponent {
             onMovieCardClick={() => onMovieCardClick(index)}
             onMovieCardHover={() => this.movieCardHoverHandler(index)}
             onMovieCardMouseOut={this.movieCardMouseOutHandler}
-            isPlaying={
-              this.state.selectedMovieId === index && this.state.isPlaying
-            }
+            isPlaying={this.state.selectedMovieId === index}
           />
         ))}
       </div>
     </React.Fragment>;
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this._timeout);
   }
 }
 

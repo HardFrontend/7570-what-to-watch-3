@@ -12,7 +12,7 @@ const filmList = [
     runTime: `1h 50m`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Bdardjeeling Limited`,
@@ -23,7 +23,7 @@ const filmList = [
     runTime: `1h 50m`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Fantastic beasts the crimes of grindelwald`,
@@ -34,7 +34,7 @@ const filmList = [
     runTime: `1h 50m`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     title: `Johnny english`,
@@ -45,7 +45,7 @@ const filmList = [
     runTime: `1h 50m`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
-    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];
 

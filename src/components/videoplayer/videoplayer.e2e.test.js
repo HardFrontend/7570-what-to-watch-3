@@ -1,7 +1,8 @@
 import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import Videoplayer from "./videoplayer.jsx";
+import VideoPlayer from "./videoplayer.jsx";
+import MoviePlayer from "./videoplayer";
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -16,25 +17,40 @@ const movie = {
   runTime: `1h 50m`,
   director: `Wes Andreson`,
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
-  video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
+Enzyme.configure({adapter: new Adapter()});
 
-it(`Should play video on click`, () => {
-  const fakePlay = jest
-    .spyOn(window.HTMLMediaElement.prototype, `play`)
-    .mockImplementation(() => {});
+jest.spyOn(window.HTMLMediaElement.prototype, `play`)
+  .mockImplementation(() => {});
 
-  const moviePlayer = mount(
-      <Videoplayer
-        movie={movie}
-        muted={true}
-        autoPlay={false} />
-  );
+jest.spyOn(window.HTMLMediaElement.prototype, `load`)
+  .mockImplementation(() => {});
 
-  expect(moviePlayer.state(`isPlaying`)).toBe(false);
-  moviePlayer.simulate(`click`);
-  expect(moviePlayer.state(`isPlaying`)).toBe(true);
+it(`VideoPlayer should have state isPlaying true`, () => {
+  const player = mount(<VideoPlayer
+    movie={movie}
+    src={``}
+    poster={``}
+    muted={true}
+    stopOnPause={true}
+    isPlaying={true}
+  />);
 
-  expect(fakePlay).toHaveBeenCalled();
-  fakePlay.mockRestore();
+  player.instance()._videoRef.current.onplay();
+
+  expect(player.state().isPlaying).toBe(true);
+});
+
+it(`VideoPlayer should have state isPlaying false (paused)`, () => {
+  const player = mount(<VideoPlayer
+    movie={movie}
+    src={``}
+    poster={``}
+    muted={true}
+    stopOnPause={true}
+    isPlaying={false}
+  />);
+
+  expect(player.state().isPlaying).toBe(false);
 });
