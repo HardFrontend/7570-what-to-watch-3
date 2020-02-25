@@ -18,6 +18,7 @@ it(`Render FilmCard`, () => {
   const tree = renderer
     .create(<FilmCard
       movie={movie}
+      isPlaying={false}
       onMovieCardClick={() => {}}
       onMovieCardHover={() => {}}
       onMovieCardMouseOut={() => {}}

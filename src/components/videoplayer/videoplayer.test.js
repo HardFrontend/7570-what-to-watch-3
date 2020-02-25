@@ -26,7 +26,10 @@ it(`Render VideoPlayer`, () => {
       stopOnPause={true}
       src={movie.videoUrl}
     />, {
-      createNodeMock: () => ({}),
+      createNodeMock: () => ({
+        play() {
+        }
+      }),
     })
     .toJSON();
 

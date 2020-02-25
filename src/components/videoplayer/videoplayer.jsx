@@ -1,5 +1,6 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import React, {PureComponent} from "react";
+
 class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
@@ -23,8 +24,7 @@ class VideoPlayer extends PureComponent {
     video.onplay = () => {
       this.setState({
         isPlaying: true
-      })
-      video.play();
+      });
     };
 
     video.onpause = () => {
@@ -59,14 +59,17 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {stopOnPause} = this.props;
+    const {stopOnPause, isPlaying} = this.props;
     const video = this._videoRef.current;
 
-
-    video.pause();
-    if (stopOnPause) {
-      video.currentTime = 0;
-      video.load();
+    if (isPlaying && video.paused) {
+      video.play();
+    } else {
+      video.pause();
+      if (stopOnPause) {
+        video.currentTime = 0;
+        video.load();
+      }
     }
   }
 }
