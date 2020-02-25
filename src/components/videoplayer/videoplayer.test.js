@@ -30,8 +30,6 @@ it(`Render VideoPlayer`, () => {
     })
     .toJSON();
 
-  tree.instance()._videoRef.current.onplay();
-
   expect(tree).toMatchSnapshot();
 });
 

@@ -23,7 +23,8 @@ class VideoPlayer extends PureComponent {
     video.onplay = () => {
       this.setState({
         isPlaying: true
-      });
+      })
+      video.play();
     };
 
     video.onpause = () => {
