@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import React, {PureComponent} from "react";
 import {ActionCreator} from "../../reducer.js";
+import {ALL_GENRES} from "../utils/genres.js";
 
 import MovieList from "../movie-list/movie-list.jsx";
 
-const ALL_GENRES = `All genres`;
 
 class GenreList extends PureComponent {
   constructor(props) {

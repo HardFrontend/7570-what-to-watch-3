@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {ALL_GENRES} from "../utils/genres.js";
 
 import Main from "../main/main.jsx";
 import MovieDetails from "../movie-details/movie-page-details.jsx";
@@ -33,6 +34,7 @@ class App extends PureComponent {
         filmPromo={filmPromo}
         filmList={filmList}
         onMovieCardClick={this.movieCardClickHandler}
+        genre={ALL_GENRES}
       />;
     </React.Fragment>;
   }

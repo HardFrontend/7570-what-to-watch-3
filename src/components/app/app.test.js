@@ -60,23 +60,25 @@ const filmList = [
   }
 ];
 
-describe(`Render App`, () => {
-  it(`Render App`, () => {
-    const store = mockStore({
-      gender: `Horror`,
-    });
+it(`Render App`, () => {
+  const store = mockStore({
+    gender: `Horror`,
+    filmList
+  });
 
-    const tree = renderer
+  const genre = `Horror`;
+
+  const tree = renderer
     .create(
         <Provider store={store}>
           <App
             filmPromo={filmPromo}
             filmList={filmList}
+            genre={genre}
           />
         </Provider>)
     .toJSON();
 
-    expect(tree).toMatchSnapshot();
-  });
+  expect(tree).toMatchSnapshot();
 });
 

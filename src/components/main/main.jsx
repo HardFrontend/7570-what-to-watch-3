@@ -7,7 +7,8 @@ import GenreList from "../genre-list/genre-list.jsx";
 const Main = (props) => {
   const {filmPromo,
     filmList,
-    onMovieCardClick
+    onMovieCardClick,
+    genre
   } = props;
 
   return (
@@ -71,7 +72,7 @@ const Main = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <GenreList filmList={filmList} onMovieCardClick={onMovieCardClick}/>
+        <GenreList filmList={filmList} onMovieCardClick={onMovieCardClick} genre={genre}/>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -115,7 +116,8 @@ Main.propTypes = {
         starring: PropTypes.array.isRequired
       }).isRequired
   ).isRequired,
-  onMovieCardClick: PropTypes.func.isRequired
+  onMovieCardClick: PropTypes.func.isRequired,
+  genre: PropTypes.string.isRequired
 };
 
 export default Main;
