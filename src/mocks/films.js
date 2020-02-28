@@ -2,18 +2,18 @@ export default [
   {
     title: `Bohemian rhapsody`,
     imgPoster: `img/bohemian-rhapsody.jpg`,
-    genre: `Comedy`,
+    genre: `Dramas`,
     releaseDate: 2020,
     imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
     runTime: `1h 50m`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
-    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `Bdardjeeling Limited`,
     imgPoster: `img/dardjeeling-limited.jpg`,
-    genre: `Horror`,
+    genre: `Comedies`,
     releaseDate: 2019,
     imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
     runTime: `1h 50m`,
@@ -35,12 +35,56 @@ export default [
   {
     title: `Johnny english`,
     imgPoster: `img/johnny-english.jpg`,
-    genre: `Horror`,
+    genre: `Documentary`,
     releaseDate: 2019,
     imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
     runTime: `1h 50m`,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
+  {
+    title: `macbeth`,
+    imgPoster: `img/macbeth.jpg`,
+    genre: `Dramas`,
+    releaseDate: 2020,
+    imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
+    runTime: `1h 50m`,
+    director: `Wes Andreson`,
+    starring: [`Edward Norton`, `Jude Law`],
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  },
+  {
+    title: `Midnight Special`,
+    imgPoster: `img/midnight-special.jpg`,
+    genre: `Comedies`,
+    releaseDate: 2019,
+    imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
+    runTime: `1h 50m`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
+  {
+    title: `Mindhunter`,
+    genre: `Horror`,
+    releaseDate: 2019,
+    imgPoster: `img/mindhunter.jpg`,
+    imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
+    runTime: `1h 50m`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+  },
+  {
+    title: `Moonrise Kingdom.`,
+    imgPoster: `img/moonrise-kingdom.jpg`,
+    genre: `Documentary`,
+    releaseDate: 2019,
+    imgBg: `img/bg-the-grand-budapest-hotel.jpg`,
+    runTime: `1h 50m`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Jude Law`],
     videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];

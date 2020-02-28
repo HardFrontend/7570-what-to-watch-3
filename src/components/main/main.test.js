@@ -1,6 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+
 import Main from './main.jsx';
+
+const mockStore = configureStore([]);
 
 const filmPromo = {
   name: `Film name`,
@@ -55,17 +60,24 @@ const filmList = [
   }
 ];
 
-it(`Render Main`, () => {
-  const tree = renderer
-    .create(<Main
-      filmPromo={filmPromo}
-      filmList={filmList}
-      onMovieCardClick={() => {}}
-      onMovieCardHover={() => {}}
-    />)
+describe(`Render Main`, () => {
+  it(`Render Main`, () => {
+    const store = mockStore({
+      gender: `Horror`,
+    });
+
+    const tree = renderer
+    .create(
+        <Provider store={store}>
+          <Main
+            filmPromo={filmPromo}
+            filmList={filmList}
+            onMovieCardClick={() => {}}
+            onMovieCardHover={() => {}}
+          />
+        </Provider>)
     .toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
 });
-
-

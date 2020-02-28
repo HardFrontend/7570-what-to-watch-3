@@ -1,17 +1,5 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {Provider} from "react-redux";
-import configureStore from "redux-mock-store";
-
-import App from './app.jsx';
-
-const mockStore = configureStore([]);
-
-const filmPromo = {
-  name: `Film name`,
-  genre: `Film genre`,
-  releaseDate: 2020,
-};
+import {reducer, ActionCreator, ActionType} from "./reducer.js";
+import filmsMocks from "./mocks/films";
 
 const filmList = [
   {
@@ -60,23 +48,46 @@ const filmList = [
   }
 ];
 
-describe(`Render App`, () => {
-  it(`Render App`, () => {
-    const store = mockStore({
-      gender: `Horror`,
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual({
+    genre: `All genres`,
+    filmsList: filmsMocks
+  });
+});
+
+it(`Reducer should change genre`, () => {
+  expect(reducer({
+    genre: `All genres`,
+  }, {
+    type: ActionType.GENRE_CHANGE,
+    payload: `Comedy`,
+  })).toEqual({
+    genre: `Comedy`
+  });
+
+  expect(reducer({
+    genre: `All genres`,
+  }, {
+    type: ActionType.GENRE_CHANGE,
+    payload: `Horror`,
+  })).toEqual({
+    genre: `Horror`
+  });
+});
+
+describe(`Action creators work correctly`, () => {
+  it(`Action creator for incrementing step returns correct action`, () => {
+    expect(ActionCreator.changeGenre(`Horror`)).toEqual({
+      type: ActionType.GENRE_CHANGE,
+      payload: `Horror`
     });
+  });
 
-    const tree = renderer
-    .create(
-        <Provider store={store}>
-          <App
-            filmPromo={filmPromo}
-            filmList={filmList}
-          />
-        </Provider>)
-    .toJSON();
-
-    expect(tree).toMatchSnapshot();
+  it(`Action creator for incrementing step returns correct action`, () => {
+    expect(ActionCreator.changeGenre()).toEqual({
+      type: ActionType.GENRE_CHANGE,
+      payload: `All genres`
+    });
   });
 });
 
