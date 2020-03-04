@@ -74,6 +74,8 @@ const Main = (props) => {
 
         <GenreList filmList={filmList} onMovieCardClick={onMovieCardClick} genre={genre}/>
 
+        <MovieList filmList={filmList} onMovieCardClick={onMovieCardClick}/>
+
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
         </div>

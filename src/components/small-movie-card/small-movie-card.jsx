@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import MoviePlayer from "../videoplayer/videoplayer.jsx";
+import withActiveMovieCard from "../../hocs/with-active-movie-card.jsx";
+
+const ActiveMovieCard = withActiveMovieCard(MoviePlayer);
 
 const MovieCard = (props) => {
   const {movie, onMovieCardClick, onMovieCardHover, isPlaying, onMovieCardMouseOut} = props;
@@ -12,7 +15,7 @@ const MovieCard = (props) => {
           <img src={movie.imgPoster} alt={movie.title} width="280" height="175" />
         )}
         {isPlaying && (
-          <MoviePlayer isPlaying={isPlaying} stopOnPause={true} src={movie.videoUrl} movie={movie} muted={true} />
+          <ActiveMovieCard isPlaying={isPlaying} stopOnPause={true} src={movie.videoUrl} movie={movie} muted={true} />
         )}
       </div>
       <h3 className="small-movie-card__title" >

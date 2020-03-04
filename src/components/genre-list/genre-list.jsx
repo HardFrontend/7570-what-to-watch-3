@@ -2,13 +2,32 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import React, {PureComponent} from "react";
 import {ActionCreator} from "../../reducer.js";
-import {ALL_GENRES} from "../utils/genres.js";
+import genres from '../../mocks/genres';
+
 
 import MovieList from "../movie-list/movie-list.jsx";
 
 
-class GenreList extends PureComponent {
-  constructor(props) {
+const GenreList = ({currentGenre, changeGenre}) => {
+  return (
+    <ul className="catalog__genres-list">
+      {genres.map((availableGenre, index) => (
+        <li key={availableGenre + index}
+          className={`catalog__genres-item
+           ${currentGenre === availableGenre ? `catalog__genres-item--active` : ``
+        }`}
+        >
+          <a onClick={() => {
+            changeGenre(availableGenre);
+          }}
+          href="#" className="catalog__genres-link">{availableGenre}</a>
+        </li>
+      ))}
+    </ul>);
+};
+
+
+/*  constructor(props) {
     super(props);
 
   }
@@ -21,42 +40,24 @@ class GenreList extends PureComponent {
     return genre === ALL_GENRES
       ? filmList
       : filmList.filter((movie) => movie.genre === genre);
-  }
+  }*/
 
-  render() {
-    const {filmList, genre, changeGenre, onMovieCardClick} = this.props;
-    const genders = this.getGenres(filmList);
+/*  render() {
+    const {filmList, genre, changeGenre, onMovieCardClick, currentGenre} = this.props;
+    const genders = this.getGenres(filmList);*/
 
-    return <React.Fragment>
-      <ul className="catalog__genres-list">
-        {genders.map((availableGenre, index) => (
-          <li key={availableGenre + index}
-            className={`catalog__genres-item ${
-              genre === availableGenre ? `catalog__genres-item--active` : ``
-            }`}
-          >
-            <a onClick={() => {
-              changeGenre(availableGenre);
-            }}
-            href="#" className="catalog__genres-link">{availableGenre}</a>
-          </li>
-        ))}
-      </ul>
 
-      <MovieList filmList={this.getMoviesByGenre(genre, filmList)} onMovieCardClick={onMovieCardClick}/>
+/* { <MovieList filmList={this.getMoviesByGenre(genre, filmList)} onMovieCardClick={onMovieCardClick}/>}*/
 
-    </React.Fragment>;
-  }
-}
 
 const mapStateToProps = (state) => ({
-  genre: state.genre,
-  movies: state.filmList
+  currentGenre: state.currentGenre
 });
 
 const mapDispatchToProps = (dispatch) => ({
   changeGenre(availableGenre) {
     dispatch(ActionCreator.changeGenre(availableGenre));
+    dispatch(ActionCreator.setNewFilmsList());
   }
 });
 
@@ -75,7 +76,7 @@ GenreList.propTypes = {
   ).isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   changeGenre: PropTypes.func.isRequired,
-  genre: PropTypes.string.isRequired
+  currentGenre: PropTypes.string.isRequired
 };
 
 export {GenreList};

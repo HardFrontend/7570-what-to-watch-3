@@ -3,8 +3,9 @@ import filmsMocks from "./mocks/films.js";
 import {ALL_GENRES} from "./components/utils/genres.js";
 
 const initialState = {
-  genre: `All genres`,
-  filmsList: filmsMocks
+  currentGenre: `All genres`,
+  filmsList: filmsMocks,
+  filmsToRender: filmsMocks
 };
 
 const ActionType = {
@@ -16,6 +17,10 @@ const ActionCreator = {
   changeGenre: (genre = ALL_GENRES) => ({
     type: ActionType.GENRE_CHANGE,
     payload: genre
+  }),
+
+  setNewFilmsList: () => ({
+    type: ActionType.MOVIES_CHANGE,
   })
 };
 
@@ -24,7 +29,17 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.GENRE_CHANGE:
       return extend(state, {
-        genre: action.payload,
+        currentGenre: action.payload
+      });
+
+    case ActionType.MOVIES_CHANGE:
+      const {currentGenre, filmsList} = state;
+      const newFilmsList = filmsList.filter((film) => film.genre === currentGenre);
+
+      console.log(currentGenre);
+
+      return extend(state, {
+        filmsToRender: newFilmsList
       });
   }
 

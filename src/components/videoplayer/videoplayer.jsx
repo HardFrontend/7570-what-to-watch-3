@@ -1,78 +1,13 @@
-import PropTypes from "prop-types";
-import React, {PureComponent} from "react";
+import React, {Fragment} from 'react';
+import PropTypes from 'prop-types';
 
-class VideoPlayer extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this._videoRef = React.createRef();
-
-    this.state = {
-      isPlaying: props.isPlaying
-    };
-  }
-
-  componentDidMount() {
-    const {movie, muted, isPlaying} = this.props;
-    const video = this._videoRef.current;
-
-    video.src = movie.videoUrl;
-    video.poster = movie.imgPoster;
-    video.muted = muted;
-    video.controls = true;
-
-    video.onplay = () => {
-      this.setState({
-        isPlaying: true
-      });
-    };
-
-    video.onpause = () => {
-      this.setState({
-        isPlaying: false
-      });
-    };
-
-    if (isPlaying) {
-      video.play();
-    }
-  }
-
-  componentWillUnmount() {
-    const video = this._videoRef.current;
-
-    video.onplay = null;
-    video.onpause = null;
-    video.src = ``;
-    video.height = ``;
-    video.poster = ``;
-  }
-
-  render() {
-    return (
-      <video
-        ref={this._videoRef}
-        width="100%"
-        height="auto"
-      />
-    );
-  }
-
-  componentDidUpdate() {
-    const {stopOnPause, isPlaying} = this.props;
-    const video = this._videoRef.current;
-
-    if (isPlaying && video.paused) {
-      video.play();
-    } else {
-      video.pause();
-      if (stopOnPause) {
-        video.currentTime = 0;
-        video.load();
-      }
-    }
-  }
-}
+const VideoPlayer = ({children}) => {
+  return (
+    <Fragment>
+      {children}
+    </Fragment>
+  );
+};
 
 VideoPlayer.propTypes = {
   movie: PropTypes.shape({
