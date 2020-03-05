@@ -19,6 +19,7 @@ class App extends PureComponent {
 
   movieCardClickHandler(selectedMovieId) {
     this.setState({selectedMovieId});
+    console.log(selectedMovieId)
   }
 
   _renderApp() {

@@ -14,10 +14,11 @@ const MovieList = (props) => {
         <SmallMovieCard
           key={movie.title + index}
           movie={movie}
-          onMovieCardClick={() => onMovieCardClick(index)}
-          /*onMovieCardHover={() => this.movieCardHoverHandler(index)}
-          onMovieCardMouseOut={this.movieCardMouseOutHandler}
-          isPlaying={this.state.selectedMovieId === index}*/
+          activeCard={activeItem}
+          onMovieCardClick={() => onMovieCardClick(movie.id)}
+          onMovieCardHover ={onActiveItemChange}
+          onMovieCardMouseOut={onActiveItemChange}
+          //isPlaying={this.state.selectedMovieId === index}
         />
       ))}
     </div>

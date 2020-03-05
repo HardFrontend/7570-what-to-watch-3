@@ -34,6 +34,13 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.MOVIES_CHANGE:
       const {currentGenre, filmsList} = state;
+
+      if (currentGenre === `All genres`) {
+        return extend(state, {
+          filmsToRender: filmsList
+        });
+      }
+
       const newFilmsList = filmsList.filter((film) => film.genre === currentGenre);
 
       console.log(currentGenre);

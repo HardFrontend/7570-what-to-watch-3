@@ -9,7 +9,7 @@ const withActiveMovieCard = (Component) => {
       this._videoRef = React.createRef();
 
       this.state = {
-        isPlaying: props.isPlaying
+        isPlaying: this.props.isPlaying
       };
     }
 
@@ -50,17 +50,18 @@ const withActiveMovieCard = (Component) => {
     }
 
     componentDidUpdate() {
-      const {stopOnPause, isPlaying} = this.props;
       const video = this._videoRef.current;
 
-      if (isPlaying && video.paused) {
-        video.play();
-      } else {
-        video.pause();
-        if (stopOnPause) {
-          video.currentTime = 0;
-          video.load();
-        }
+      const {isPlaying} = this.props;
+
+      if (isPlaying !== this.state.isPlaying) {
+        this.setState({isPlaying}, () => {
+          if (isPlaying) {
+            video.play();
+          } else {
+            video.load();
+          }
+        });
       }
     }
 

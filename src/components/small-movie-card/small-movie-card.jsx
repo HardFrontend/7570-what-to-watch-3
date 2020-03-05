@@ -11,15 +11,16 @@ const MovieCard = (props) => {
   return <React.Fragment>
     <article className="small-movie-card catalog__movies-card" onMouseOver={onMovieCardHover} onMouseOut={onMovieCardMouseOut} >
       <div className="small-movie-card__image">
-        {!isPlaying && (
-          <img src={movie.imgPoster} alt={movie.title} width="280" height="175" />
-        )}
-        {isPlaying && (
+
           <ActiveMovieCard isPlaying={isPlaying} stopOnPause={true} src={movie.videoUrl} movie={movie} muted={true} />
-        )}
       </div>
       <h3 className="small-movie-card__title" >
-        <a className="small-movie-card__link" onClick={onMovieCardClick}>{movie.title}</a>
+        <a className="small-movie-card__link"
+          onClick={(e) => {
+            e.preventDefault();
+            onMovieCardClick(movie);
+          }}
+        >{movie.title}</a>
       </h3>
     </article>
   </React.Fragment>;

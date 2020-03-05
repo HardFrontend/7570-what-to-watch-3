@@ -1,5 +1,8 @@
+let id = 0;
+
 export default [
   {
+    id: id++,
     title: `Bohemian rhapsody`,
     imgPoster: `img/bohemian-rhapsody.jpg`,
     genre: `Dramas`,
@@ -11,6 +14,7 @@ export default [
     videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
+    id: id++,
     title: `Bdardjeeling Limited`,
     imgPoster: `img/dardjeeling-limited.jpg`,
     genre: `Comedies`,
@@ -22,6 +26,7 @@ export default [
     videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
+    id: id++,
     title: `Fantastic beasts the crimes of grindelwald`,
     genre: `Horror`,
     releaseDate: 2019,
@@ -33,6 +38,7 @@ export default [
     videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
+    id: id++,
     title: `Johnny english`,
     imgPoster: `img/johnny-english.jpg`,
     genre: `Documentary`,
@@ -44,6 +50,7 @@ export default [
     videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
+    id: id++,
     title: `macbeth`,
     imgPoster: `img/macbeth.jpg`,
     genre: `Dramas`,
@@ -55,6 +62,7 @@ export default [
     videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
+    id: id++,
     title: `Midnight Special`,
     imgPoster: `img/midnight-special.jpg`,
     genre: `Comedies`,
@@ -66,6 +74,7 @@ export default [
     videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
+    id: id++,
     title: `Mindhunter`,
     genre: `Horror`,
     releaseDate: 2019,
@@ -77,6 +86,7 @@ export default [
     videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
+    id: id++,
     title: `Moonrise Kingdom.`,
     imgPoster: `img/moonrise-kingdom.jpg`,
     genre: `Documentary`,
