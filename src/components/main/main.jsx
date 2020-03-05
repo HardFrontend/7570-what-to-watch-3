@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import MovieList from "../movie-list/movie-list.jsx";
 import GenreList from "../genre-list/genre-list.jsx";
+import ButtonShowMore from "../button-show-more/button-show-more.jsx";
+
 import withActiveItem from "../../hocs/with-active-item.jsx";
 
 const MovieListWrapper = withActiveItem(MovieList);
@@ -79,9 +81,8 @@ const Main = (props) => {
 
         <MovieListWrapper onMovieCardClick={onMovieCardClick} activeItem={{}}/>
 
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        <ButtonShowMore />
+
       </section>
 
       <footer className="page-footer">

@@ -14,29 +14,19 @@ const withActiveMovieCard = (Component) => {
     }
 
     componentDidMount() {
-      const {movie, muted, isPlaying} = this.props;
+      const {movie, muted} = this.props;
       const video = this._videoRef.current;
 
       video.src = movie.videoUrl;
       video.poster = movie.imgPoster;
       video.muted = muted;
-      video.controls = true;
+      //video.controls = true;
 
       video.onplay = () => {
         this.setState({
-          isPlaying: true
+          isPlaying: true,
         });
       };
-
-      video.onpause = () => {
-        this.setState({
-          isPlaying: false
-        });
-      };
-
-      if (isPlaying) {
-        video.play();
-      }
     }
 
     componentWillUnmount() {

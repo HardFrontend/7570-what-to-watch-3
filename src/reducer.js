@@ -5,12 +5,14 @@ import {ALL_GENRES} from "./components/utils/genres.js";
 const initialState = {
   currentGenre: `All genres`,
   filmsList: filmsMocks,
-  filmsToRender: filmsMocks
+  filmsToRender: filmsMocks,
+  filmsToShowCount: 8
 };
 
 const ActionType = {
   GENRE_CHANGE: `GENRE_CHANGE`,
-  MOVIES_CHANGE: `MOVIES_CHANGE`
+  MOVIES_CHANGE: `MOVIES_CHANGE`,
+  SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`,
 };
 
 const ActionCreator = {
@@ -21,6 +23,10 @@ const ActionCreator = {
 
   setNewFilmsList: () => ({
     type: ActionType.MOVIES_CHANGE,
+  }),
+
+  showMoreFilms: () => ({
+    type: ActionType.SHOW_MORE_MOVIES,
   })
 };
 
@@ -43,10 +49,15 @@ const reducer = (state = initialState, action) => {
 
       const newFilmsList = filmsList.filter((film) => film.genre === currentGenre);
 
-      console.log(currentGenre);
-
       return extend(state, {
         filmsToRender: newFilmsList
+      });
+
+    case ActionType.SHOW_MORE_MOVIES:
+      const {filmsToShowCount} = state;
+
+      return extend(state, {
+        filmsToShowCount: filmsToShowCount + 8
       });
   }
 

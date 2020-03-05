@@ -6,19 +6,20 @@ import {connect} from "react-redux";
 const PLAYBACK_DELAY_TIMEOUT = 1000;
 
 const MovieList = (props) => {
-  const {filmsToRender, onMovieCardClick, filmsToShowCount, activeItem, onActiveItemChange} = props;
+  const {filmsToRender, onMovieCardClick, filmsToShowCount, activeItem, onActiveItemChange, activeItemHandler} = props;
+  const newFilmsToRender = filmsToRender.slice(0, filmsToShowCount);
 
   return (
     <div className="catalog__movies-list">
-      {filmsToRender.map((movie, index) => (
+      {newFilmsToRender.map((movie) => (
         <SmallMovieCard
-          key={movie.title + index}
+          key={movie.id}
           movie={movie}
           activeCard={activeItem}
           onMovieCardClick={() => onMovieCardClick(movie.id)}
-          onMovieCardHover ={onActiveItemChange}
-          onMovieCardMouseOut={onActiveItemChange}
-          //isPlaying={this.state.selectedMovieId === index}
+          onMovieCardHover ={activeItemHandler}
+          onMovieCardMouseOut={activeItemHandler}
+          // isPlaying={this.state.selectedMovieId === index}
         />
       ))}
     </div>
@@ -26,8 +27,10 @@ const MovieList = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  filmsToRender: state.filmsToRender
+  filmsToRender: state.filmsToRender,
+  filmsToShowCount: state.filmsToShowCount
 });
+
 
 MovieList.propTypes = {
   filmsToRender: PropTypes.arrayOf(
@@ -37,6 +40,8 @@ MovieList.propTypes = {
       }).isRequired
   ).isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
+  filmsToShowCount: PropTypes.number.isRequired,
+  activeItem: PropTypes.object.isRequired,
 };
 
 

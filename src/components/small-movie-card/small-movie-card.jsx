@@ -6,13 +6,18 @@ import withActiveMovieCard from "../../hocs/with-active-movie-card.jsx";
 const ActiveMovieCard = withActiveMovieCard(MoviePlayer);
 
 const MovieCard = (props) => {
-  const {movie, onMovieCardClick, onMovieCardHover, isPlaying, onMovieCardMouseOut} = props;
+  const {movie, onMovieCardClick, onMovieCardHover, isPlaying, onMovieCardMouseOut, activeItem} = props;
 
   return <React.Fragment>
-    <article className="small-movie-card catalog__movies-card" onMouseOver={onMovieCardHover} onMouseOut={onMovieCardMouseOut} >
+    <article className="small-movie-card catalog__movies-card"
+      onMouseOver={() => {
+        onMovieCardHover(movie);
+      } }
+
+      onMouseOut={onMovieCardMouseOut} >
       <div className="small-movie-card__image">
 
-          <ActiveMovieCard isPlaying={isPlaying} stopOnPause={true} src={movie.videoUrl} movie={movie} muted={true} />
+        <ActiveMovieCard isPlaying={activeItem === movie} src={movie.videoUrl} movie={movie} muted={true} />
       </div>
       <h3 className="small-movie-card__title" >
         <a className="small-movie-card__link"
@@ -20,7 +25,7 @@ const MovieCard = (props) => {
             e.preventDefault();
             onMovieCardClick(movie);
           }}
-        >{movie.title}</a>
+        >{movie.id} {movie.title}</a>
       </h3>
     </article>
   </React.Fragment>;

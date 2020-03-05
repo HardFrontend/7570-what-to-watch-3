@@ -19,6 +19,7 @@ const withActiveItem = (Component) => {
     render() {
       const {activeItem} = this.state;
       console.log(activeItem);
+
       return (
         <Component {...this.props} activeItem={activeItem} activeItemHandler={this.activeItemHandler}>
 
