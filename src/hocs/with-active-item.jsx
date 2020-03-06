@@ -13,12 +13,10 @@ const withActiveItem = (Component) => {
 
     activeItemHandler(selectedMovieId) {
       this.setState({activeItem: selectedMovieId});
-      console.log(selectedMovieId);
     }
 
     render() {
       const {activeItem} = this.state;
-      console.log(activeItem);
 
       return (
         <Component {...this.props} activeItem={activeItem} activeItemHandler={this.activeItemHandler}>

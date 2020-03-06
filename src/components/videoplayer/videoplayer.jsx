@@ -22,8 +22,7 @@ VideoPlayer.propTypes = {
     videoUrl: PropTypes.string.isRequired
   }),
   muted: PropTypes.bool.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  stopOnPause: PropTypes.bool.isRequired
+  isPlaying: PropTypes.bool.isRequired
 };
 
 export default VideoPlayer;

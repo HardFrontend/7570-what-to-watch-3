@@ -16,7 +16,7 @@ const MovieList = (props) => {
           key={movie.id}
           movie={movie}
           activeCard={activeItem}
-          onMovieCardClick={() => onMovieCardClick(movie.id)}
+          onMovieCardClick={onMovieCardClick}
           onMovieCardHover ={activeItemHandler}
           onMovieCardMouseOut={activeItemHandler}
           // isPlaying={this.state.selectedMovieId === index}
@@ -28,7 +28,7 @@ const MovieList = (props) => {
 
 const mapStateToProps = (state) => ({
   filmsToRender: state.filmsToRender,
-  filmsToShowCount: state.filmsToShowCount
+  filmsToShowCount: state.filmsToShowCount,
 });
 
 

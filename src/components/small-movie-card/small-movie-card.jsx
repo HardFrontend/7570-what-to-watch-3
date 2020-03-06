@@ -7,7 +7,6 @@ const ActiveMovieCard = withActiveMovieCard(MoviePlayer);
 
 const MovieCard = (props) => {
   const {movie, onMovieCardClick, onMovieCardHover, onMovieCardMouseOut, activeCard} = props;
-  console.log(activeCard)
 
   return <React.Fragment>
     <article className="small-movie-card catalog__movies-card"
@@ -15,7 +14,12 @@ const MovieCard = (props) => {
         onMovieCardHover(movie);
       } }
 
-      onMouseOut={onMovieCardMouseOut} >
+      onMouseOut={onMovieCardMouseOut}
+      onClick={(e) => {
+        e.preventDefault();
+        onMovieCardClick(activeCard);
+      }}
+    >
       <div className="small-movie-card__image">
 
         <ActiveMovieCard isPlaying={activeCard === movie} src={movie.videoUrl} movie={movie} muted={true} />
@@ -24,7 +28,7 @@ const MovieCard = (props) => {
         <a className="small-movie-card__link"
           onClick={(e) => {
             e.preventDefault();
-            onMovieCardClick(movie);
+            onMovieCardClick(activeCard);
           }}
         >{movie.id} {movie.title}</a>
       </h3>
@@ -48,7 +52,6 @@ MovieCard.propTypes = {
   onMovieCardClick: PropTypes.func.isRequired,
   onMovieCardHover: PropTypes.func.isRequired,
   onMovieCardMouseOut: PropTypes.func.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
   activeCard: PropTypes.object.isRequired
 };
 

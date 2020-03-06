@@ -1,11 +1,8 @@
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import React, {PureComponent} from "react";
+import React from "react";
 import {ActionCreator} from "../../reducer.js";
 import genres from '../../mocks/genres';
-
-
-import MovieList from "../movie-list/movie-list.jsx";
 
 
 const GenreList = ({currentGenre, changeGenre}) => {
@@ -25,30 +22,6 @@ const GenreList = ({currentGenre, changeGenre}) => {
       ))}
     </ul>);
 };
-
-
-/*  constructor(props) {
-    super(props);
-
-  }
-
-  getGenres(movies) {
-    return [ALL_GENRES, ...new Set(movies.map((movie) => movie.genre))];
-  }
-
-  getMoviesByGenre(genre, filmList) {
-    return genre === ALL_GENRES
-      ? filmList
-      : filmList.filter((movie) => movie.genre === genre);
-  }*/
-
-/*  render() {
-    const {filmList, genre, changeGenre, onMovieCardClick, currentGenre} = this.props;
-    const genders = this.getGenres(filmList);*/
-
-
-/* { <MovieList filmList={this.getMoviesByGenre(genre, filmList)} onMovieCardClick={onMovieCardClick}/>}*/
-
 
 const mapStateToProps = (state) => ({
   currentGenre: state.currentGenre

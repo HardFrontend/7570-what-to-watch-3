@@ -1,61 +1,45 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import {ALL_GENRES} from "../utils/genres.js";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
 
 import Main from "../main/main.jsx";
 import MovieDetails from "../movie-details/movie-page-details.jsx";
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
+const App = ({filmList, currentGenre, filmPromo, chosenFilm, onMovieCardClick}) => {
 
-    this.state = {
-      selectedMovieId: null
-    };
-
-    this.movieCardClickHandler = this.movieCardClickHandler.bind(this);
-  }
-
-  movieCardClickHandler(selectedMovieId) {
-    this.setState({selectedMovieId});
-    console.log(selectedMovieId)
-  }
-
-  _renderApp() {
-    const {filmPromo, filmList} = this.props;
-    const {selectedMovieId} = this.state;
-
-    if (selectedMovieId !== null) {
-      return <MovieDetails movie={this.props.filmList[selectedMovieId]} />;
+  const renderApp = () => {
+    if (chosenFilm) {
+      return (
+        <MovieDetails movie={chosenFilm} onMovieCardClick={onMovieCardClick} filmList={filmList} />
+      );
     }
 
-    return <React.Fragment>
+    return (
       <Main
         filmPromo={filmPromo}
         filmList={filmList}
-        onMovieCardClick={this.movieCardClickHandler}
-        genre={ALL_GENRES}
-      />;
-    </React.Fragment>;
-  }
-
-  render() {
-
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            {this._renderApp()}
-          </Route>
-          <Route exact path="/dev-component">
-            <MovieDetails movie={this.props.filmList[this.state.selectedMovieId || 0]}/>
-          </Route>
-        </Switch>
-      </BrowserRouter>
+        genre={currentGenre}
+        onMovieCardClick={onMovieCardClick}
+      />
     );
-  }
-}
+  };
+
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          {renderApp()}
+        </Route>
+        <Route exact path="/dev-movie-page">
+          <MovieDetails onMovieCardClick={onMovieCardClick} filmsList={filmList} movie={chosenFilm ? chosenFilm : filmList[0]}/>
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
 
 App.propTypes = {
   filmPromo: PropTypes.shape({
@@ -76,6 +60,26 @@ App.propTypes = {
         videoUrl: PropTypes.string.isRequired
       }).isRequired
   ).isRequired,
+  chosenFilm: PropTypes.object,
+  onMovieCardClick: PropTypes.func.isRequired,
+  currentGenre: PropTypes.string.isRequired
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  promoFilm: state.promoFilm,
+  filmsList: state.filmsList,
+  chosenFilm: state.chosenFilm,
+  currentGenre: state.currentGenre
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onMovieCardClick: (chosenFilm) => {
+    dispatch(ActionCreator.setChosenFilm(chosenFilm));
+  }
+});
+
+
+export {App};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+

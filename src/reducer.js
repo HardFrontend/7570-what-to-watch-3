@@ -6,13 +6,15 @@ const initialState = {
   currentGenre: `All genres`,
   filmsList: filmsMocks,
   filmsToRender: filmsMocks,
-  filmsToShowCount: 8
+  filmsToShowCount: 8,
+  chosenFilm: null
 };
 
 const ActionType = {
   GENRE_CHANGE: `GENRE_CHANGE`,
   MOVIES_CHANGE: `MOVIES_CHANGE`,
   SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`,
+  SET_CHOSEN_FILM: `SET_CHOSEN_FILM`,
 };
 
 const ActionCreator = {
@@ -27,6 +29,11 @@ const ActionCreator = {
 
   showMoreFilms: () => ({
     type: ActionType.SHOW_MORE_MOVIES,
+  }),
+
+  setChosenFilm: (chosenFilm) => ({
+    type: ActionType.SET_CHOSEN_FILM,
+    payload: chosenFilm
   })
 };
 
@@ -58,6 +65,11 @@ const reducer = (state = initialState, action) => {
 
       return extend(state, {
         filmsToShowCount: filmsToShowCount + 8
+      });
+
+    case ActionType.SET_CHOSEN_FILM:
+      return extend(state, {
+        chosenFilm: action.payload
       });
   }
 
